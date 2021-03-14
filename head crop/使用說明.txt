@@ -1,0 +1,9 @@
+操作:
+(Step 1)將 ForCsharpCall2.dll跟haarcascade_frontalface_alt.xml 放到unity程式的根目?
+(Step 2)在最外圍的class裡頭加上這兩行
+[DllImport("ForCSharpCall2.dll", EntryPoint = "headgrab", CallingConvention = CallingConvention.Cdecl)]
+private static extern bool headgrab(string ss,string ss2);
+(Step 3)輸入headgrab的第一個字串ss代表圖片位置 headgrab會到ss位置抓圖 找出人頭後把人頭裁切成大小100*100的圖片放入ss2的位置
+回傳bool表示找頭是否成功 若headgrab找不到圖片中的人頭會自動裁切圖片中央處成100*100大小的圖片放入ss2的位置 (回傳false)
+備註:
+opencv只能在64位元中執行因此Unity程式必須是64位元才能相容
